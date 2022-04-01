@@ -1,28 +1,5 @@
 // query selector variables go here 👇
 
-// var poster = document.querySelector('.main-poster');
-// var post = document.querySelector('.poster');
-var postImg = document.querySelector('.poster-img');
-var postTitle = document.querySelector('.poster-title');
-var postQuote = document.querySelector('.poster-quote');
-
-var buttonSavePost = document.querySelector('.save-poster');
-var buttonShowSave = document.querySelector('.show-saved');
-var buttonShowRandom = document.querySelector('.show-random');
-var buttonShowForm = document.querySelector('.show-form');
-
-
-// var posterForm = document.Selector('.poster-form hidden');
-// var makePost = document.Selector('.make-poster');
-// var divide = document.Selector('.divider');
-// var show_main = document.Selector('show-main');
-//
-// var savedPosters = document.Selector('.saved-posters hidden');
-// var saved_posters = document.Selector('.saved-posters-grid');
-// var back_to_main = document.Selector('.back-to-main');
-
-
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -124,36 +101,10 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇 //put event listeners
- window.addEventListener("load", randomizePoster);
+// event listeners go here 👇
 
- buttonShowRandom.addEventListener("click", randomizePoster);
-//var.addEventListener(event,function)
-
-
-// var savePost = document.querySelector('.save-poster');
-// savePost.addEventListener('click', changePoster);
-
-
-// name.addEventListener('click',changeColor);
-
-// functions and event handlers go here 👇 //putfunctions here
+// functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  return array[Math.floor(Math.random() * array.length)];
-};
-
-
-function randomizePoster() {
-  var newTitle = getRandomIndex(titles);
-  var newQuote = getRandomIndex(quotes);
-  var newImage = getRandomIndex(images);
-  postTitle.innerText = newTitle;
-  postQuote.innerText = newQuote;
-  postImg.src = newImage;
-  // currentPoster = new Poster(newImage, newTitle, newQuote);
-  console.log(newTitle);
-};
-function randomPoster() {
-getRandomIndex
+  return Math.floor(Math.random() * array.length);
 }
