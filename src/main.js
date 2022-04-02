@@ -1,6 +1,19 @@
 // query selector variables go here 👇
+var postImg = document.querySelector('.poster-img');
+var postTitle = document.querySelector('.poster-title');
+var postQuote = document.querySelector('.poster-quote');
 
+var mainPost = document.querySelector('.main-poster');
+var postForm = document.querySelector('.poster-form');
+
+var buttonSavePost = document.querySelector('.save-poster');
+var buttonShowSave = document.querySelector('.show-saved');
+var buttonShowRandom = document.querySelector('.show-random');
+var buttonShowForm = document.querySelector('.show-form');
+
+var savedPost = document.querySelector('.saved-posters');
 // we've provided you with some data to work with 👇
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -100,12 +113,38 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
 // event listeners go here 👇
+window.addEventListener("load", randomizePoster);
 
+buttonShowRandom.addEventListener("click", randomizePoster);
+buttonShowForm.addEventListener("click", showForm);
+buttonShowSave.addEventListener('click', seeSavedPosters);
+
+//var.addEventListener(event,function)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+// function getRandomIndex(array) {
+//   return Math.floor(Math.random() * array.length);
+// }
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+  return array[Math.floor(Math.random() * array.length)];
+};
+function randomizePoster() {
+  var newTitle = getRandomIndex(titles);
+  var newQuote = getRandomIndex(quotes);
+  var newImage = getRandomIndex(images);
+  postTitle.innerText = newTitle;
+  postQuote.innerText = newQuote;
+  postImg.src = newImage;
+  // currentPoster = new Poster(newImage, newTitle, newQuote);
+};
+// function name suppose to be what function does
+function showForm() {
+  mainPost.classList.add('hidden');
+  postForm.classList.remove('hidden');
 
+}
+ function seeSavedPosters()  {
+   savedPost.classList.remove('hidden');
+   mainPost.classList.add('hidden');
+ }
