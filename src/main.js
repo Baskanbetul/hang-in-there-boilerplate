@@ -15,6 +15,13 @@ var savedPost = document.querySelector('.saved-posters');
 
 var buttonShowMain = document.querySelector('.show-main');
 var buttonBackToMain = document.querySelector('.back-to-main');
+
+var buttonMakePoster = document.querySelector('.make-poster');
+
+var formImg = document.querySelector('#poster-image-url');
+var formTitle = document.querySelector('#poster-title');
+var formQuote = document.querySelector('#poster-quote');
+
 // we've provided you with some data to work with 👇
 
 var images = [
@@ -116,15 +123,21 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+
 // event listeners go here 👇
 window.addEventListener("load", randomizePoster);
 
 buttonShowRandom.addEventListener("click", randomizePoster);
 buttonShowForm.addEventListener("click", showForm);
+
 buttonShowSave.addEventListener('click', seeSavedPosters);
 
 buttonShowMain.addEventListener('click', takeMeBack);
-buttonBackToMain.addEventListener('click', takeMeBack)
+buttonBackToMain.addEventListener('click', takeMeBack);
+
+buttonMakePoster.addEventListener('click', function() {
+  makeMyPoster();
+});
 
 //var.addEventListener(event,function)
 // functions and event handlers go here 👇
@@ -144,7 +157,7 @@ function randomizePoster() {
   postImg.src = newImage;
   // currentPoster = new Poster(newImage, newTitle, newQuote);
 };
-// function name suppose to be what function does
+
 function showForm() {
   mainPost.classList.add('hidden');
   postForm.classList.remove('hidden');
@@ -155,12 +168,24 @@ function showForm() {
    mainPost.classList.add('hidden');
  }
 
- // When a user clicks the “Nevermind, take me back!”
- // or “Back to Main” buttons, we should only see
- // the main poster section
-
  function takeMeBack() {
    mainPost.classList.remove('hidden');
    savedPost.classList.add('hidden');
    postForm.classList.add('hidden');
  }
+ // iteration 2
+
+function makeMyPoster() {
+  var myPost = new Poster(formImg.value,formTitle.value,formQuote.value);
+  displayData(formImg.value,formTitle.value,formQuote.value);
+  mainPost.classList.remove('hidden');
+  postForm.classList.add('hidden');
+};
+
+function displayData(img, title, quote) {
+  postImg.src = img;
+  postTitle.innerText = title;
+  postQuote.innerText = quote;
+  event.preventDefault()
+
+};
