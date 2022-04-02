@@ -12,6 +12,9 @@ var buttonShowRandom = document.querySelector('.show-random');
 var buttonShowForm = document.querySelector('.show-form');
 
 var savedPost = document.querySelector('.saved-posters');
+
+var buttonShowMain = document.querySelector('.show-main');
+var buttonBackToMain = document.querySelector('.back-to-main');
 // we've provided you with some data to work with 👇
 
 var images = [
@@ -120,6 +123,9 @@ buttonShowRandom.addEventListener("click", randomizePoster);
 buttonShowForm.addEventListener("click", showForm);
 buttonShowSave.addEventListener('click', seeSavedPosters);
 
+buttonShowMain.addEventListener('click', takeMeBack);
+buttonBackToMain.addEventListener('click', takeMeBack)
+
 //var.addEventListener(event,function)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -147,4 +153,14 @@ function showForm() {
  function seeSavedPosters()  {
    savedPost.classList.remove('hidden');
    mainPost.classList.add('hidden');
+ }
+
+ // When a user clicks the “Nevermind, take me back!”
+ // or “Back to Main” buttons, we should only see
+ // the main poster section
+
+ function takeMeBack() {
+   mainPost.classList.remove('hidden');
+   savedPost.classList.add('hidden');
+   postForm.classList.add('hidden');
  }
