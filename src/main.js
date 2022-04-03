@@ -44,6 +44,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+images.push(formImg.value);
 var titles = [
   "determination",
   "success",
@@ -173,19 +174,25 @@ function showForm() {
    savedPost.classList.add('hidden');
    postForm.classList.add('hidden');
  }
- // iteration 2
+ // iteration 2 bullet point 1
 
 function makeMyPoster() {
   var myPost = new Poster(formImg.value,formTitle.value,formQuote.value);
-  displayData(formImg.value,formTitle.value,formQuote.value);
+  images.push(formImg.value);
+  titles.push(formTitle.value);
+  quotes.push(formQuote.value);
+  displayData(formImg.value,formTitle.value,formQuote.value,);
   mainPost.classList.remove('hidden');
   postForm.classList.add('hidden');
 };
+// console.log(savedPosters.push(myPost));
 
 function displayData(img, title, quote) {
   postImg.src = img;
   postTitle.innerText = title;
   postQuote.innerText = quote;
   event.preventDefault()
-
 };
+
+
+// iteration2 2. bullet
