@@ -2,8 +2,8 @@
 var postImg = document.querySelector('.poster-img');
 var postTitle = document.querySelector('.poster-title');
 var postQuote = document.querySelector('.poster-quote');
-
 var mainPost = document.querySelector('.main-poster');
+
 var postForm = document.querySelector('.poster-form');
 
 var buttonSavePost = document.querySelector('.save-poster');
@@ -12,12 +12,15 @@ var buttonShowRandom = document.querySelector('.show-random');
 var buttonShowForm = document.querySelector('.show-form');
 
 var savedPost = document.querySelector('.saved-posters');
-
 var buttonShowMain = document.querySelector('.show-main');
 var buttonBackToMain = document.querySelector('.back-to-main');
 
-var buttonMakePoster = document.querySelector('.make-poster');
+var savePosterGrid = document.querySelector('.saved-posters-grid');
 
+// On the new poster form view, users should be able to
+// fill out the three input fields and then hit the Show My Poster button
+
+var buttonMakePoster = document.querySelector('.make-poster');
 var formImg = document.querySelector('#poster-image-url');
 var formTitle = document.querySelector('#poster-title');
 var formQuote = document.querySelector('#poster-quote');
@@ -44,7 +47,6 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
-images.push(formImg.value);
 var titles = [
   "determination",
   "success",
@@ -127,8 +129,8 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener("load", randomizePoster);
-
 buttonShowRandom.addEventListener("click", randomizePoster);
+
 buttonShowForm.addEventListener("click", showForm);
 
 buttonShowSave.addEventListener('click', seeSavedPosters);
@@ -139,6 +141,7 @@ buttonBackToMain.addEventListener('click', takeMeBack);
 buttonMakePoster.addEventListener('click', function() {
   makeMyPoster();
 });
+buttonSavePost.addEventListener('click', savePoster);
 
 //var.addEventListener(event,function)
 // functions and event handlers go here 👇
@@ -149,6 +152,7 @@ buttonMakePoster.addEventListener('click', function() {
 function getRandomIndex(array) {
   return array[Math.floor(Math.random() * array.length)];
 };
+
 function randomizePoster() {
   var newTitle = getRandomIndex(titles);
   var newQuote = getRandomIndex(quotes);
@@ -167,6 +171,13 @@ function showForm() {
  function seeSavedPosters()  {
    savedPost.classList.remove('hidden');
    mainPost.classList.add('hidden');
+
+  var posterList = "";
+   for(let x=0; x < savedPosters.length; x++) {
+     posterList = posterList + savedPosters[x].title + "; ";
+   }
+
+   savePosterGrid.innerText = posterList;
  }
 
  function takeMeBack() {
@@ -194,5 +205,35 @@ function displayData(img, title, quote) {
   event.preventDefault()
 };
 
-
 // iteration2 2. bullet
+
+function savePoster() {
+
+  var myPost = new Poster(postImg.src,postTitle.innerText,postQuote.innerText);
+
+/*
+  var index = savedPoster.findIndex(x => x.imageURL == myPost.imageURL);
+
+  if (index == -1) {
+    savedPosters.push(myPost);
+  }
+
+  */
+
+    var found = false;
+
+    for (let x=0; x < savedPosters.length; x++) {
+        if (savedPosters[x].imageURL == myPost.imageURL) {
+            found = true;
+          break;
+          console.log("Found the poster");
+        }
+    }
+
+    if (found != true) {
+      savedPosters.push(myPost);
+      console.log("Added poster");
+    }
+
+  // alert(postTitle.innerText);
+}
