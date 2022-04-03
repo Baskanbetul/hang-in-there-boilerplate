@@ -12,13 +12,11 @@ var buttonShowRandom = document.querySelector('.show-random');
 var buttonShowForm = document.querySelector('.show-form');
 
 var savedPost = document.querySelector('.saved-posters');
+
 var buttonShowMain = document.querySelector('.show-main');
 var buttonBackToMain = document.querySelector('.back-to-main');
 
 var savePosterGrid = document.querySelector('.saved-posters-grid');
-
-// On the new poster form view, users should be able to
-// fill out the three input fields and then hit the Show My Poster button
 
 var buttonMakePoster = document.querySelector('.make-poster');
 var formImg = document.querySelector('#poster-image-url');
@@ -146,9 +144,13 @@ buttonSavePost.addEventListener('click', savePoster);
 //var.addEventListener(event,function)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+
 // function getRandomIndex(array) {
 //   return Math.floor(Math.random() * array.length);
 // }
+
+
 function getRandomIndex(array) {
   return array[Math.floor(Math.random() * array.length)];
 };
@@ -160,24 +162,23 @@ function randomizePoster() {
   postTitle.innerText = newTitle;
   postQuote.innerText = newQuote;
   postImg.src = newImage;
-  // currentPoster = new Poster(newImage, newTitle, newQuote);
+  currentPoster = new Poster(newImage, newTitle, newQuote);
 };
 
 function showForm() {
   mainPost.classList.add('hidden');
   postForm.classList.remove('hidden');
-
 }
+
  function seeSavedPosters()  {
    savedPost.classList.remove('hidden');
    mainPost.classList.add('hidden');
-
-  var posterList = "";
-   for(let x=0; x < savedPosters.length; x++) {
-     posterList = posterList + savedPosters[x].title + "; ";
-   }
-
-   savePosterGrid.innerText = posterList;
+  // var posterList = "";
+  //  for(var i=0; i < savedPosters.length; i++) {
+  //    posterList = posterList + savedPosters[i].title + "; ";
+  //  }
+  //
+  //  savePosterGrid.innerText = posterList;
  }
 
  function takeMeBack() {
@@ -185,10 +186,9 @@ function showForm() {
    savedPost.classList.add('hidden');
    postForm.classList.add('hidden');
  }
- // iteration 2 bullet point 1
 
 function makeMyPoster() {
-  var myPost = new Poster(formImg.value,formTitle.value,formQuote.value);
+  currentPoster = new Poster(formImg.value,formTitle.value,formQuote.value);
   images.push(formImg.value);
   titles.push(formTitle.value);
   quotes.push(formQuote.value);
@@ -205,35 +205,60 @@ function displayData(img, title, quote) {
   event.preventDefault()
 };
 
-// iteration2 2. bullet
+// itearion3
+
+// When a user clicks the “Save This Poster”
+// click save this poster
+ // button,
+ // the current main poster will be
+ // added to the savedPosters array.
 
 function savePoster() {
-
-  var myPost = new Poster(postImg.src,postTitle.innerText,postQuote.innerText);
-
-/*
-  var index = savedPoster.findIndex(x => x.imageURL == myPost.imageURL);
-
-  if (index == -1) {
-    savedPosters.push(myPost);
-  }
-
-  */
-
-    var found = false;
-
-    for (let x=0; x < savedPosters.length; x++) {
-        if (savedPosters[x].imageURL == myPost.imageURL) {
-            found = true;
-          break;
-          console.log("Found the poster");
-        }
-    }
-
-    if (found != true) {
-      savedPosters.push(myPost);
-      console.log("Added poster");
-    }
-
-  // alert(postTitle.innerText);
+  savedPosters.push(currentPoster);
+// console.log(savedPosters)
 }
+// If a user clicks the “Save This Poster”
+// more than once on a single poster,
+// it will still only be saved once (no duplicates)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   var myPost = new Poster(postImg.src,postTitle.innerText,postQuote.innerText);
+// /*
+//   var index = savedPoster.findIndex(x => x.imageURL == myPost.imageURL);
+//   if (index == -1) {
+//     savedPosters.push(myPost);
+//   }
+//   */
+//     var found = false;
+//     for (var i=0; i < savedPosters.length; i++) {
+//         if (savedPosters[i].imageURL === myPost.imageURL) {
+//             found = true;
+//           break;
+//           console.log("Found the poster");
+//         }
+//     }
+//     if (found != true) {
+//       savedPosters.push(myPost);
+//       console.log("Added poster");
+//     }
+//   // alert(postTitle.innerText);
+// }
+// //
+// // function() {
+// //   innerHTML.
+// // }
