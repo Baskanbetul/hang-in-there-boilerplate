@@ -145,12 +145,6 @@ buttonSavePost.addEventListener('click', savePoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
-
-// function getRandomIndex(array) {
-//   return Math.floor(Math.random() * array.length);
-// }
-
-
 function getRandomIndex(array) {
   return array[Math.floor(Math.random() * array.length)];
 };
@@ -173,12 +167,6 @@ function showForm() {
  function seeSavedPosters()  {
    savedPost.classList.remove('hidden');
    mainPost.classList.add('hidden');
-  // var posterList = "";
-  //  for(var i=0; i < savedPosters.length; i++) {
-  //    posterList = posterList + savedPosters[i].title + "; ";
-  //  }
-  //
-  //  savePosterGrid.innerText = posterList;
  }
 
  function takeMeBack() {
@@ -196,7 +184,6 @@ function makeMyPoster() {
   mainPost.classList.remove('hidden');
   postForm.classList.add('hidden');
 };
-// console.log(savedPosters.push(myPost));
 
 function displayData(img, title, quote) {
   postImg.src = img;
@@ -205,60 +192,9 @@ function displayData(img, title, quote) {
   event.preventDefault()
 };
 
-// itearion3
-
-// When a user clicks the “Save This Poster”
-// click save this poster
- // button,
- // the current main poster will be
- // added to the savedPosters array.
-
 function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
   savedPosters.push(currentPoster);
-// console.log(savedPosters)
+console.log(savedPosters)
+  }
 }
-// If a user clicks the “Save This Poster”
-// more than once on a single poster,
-// it will still only be saved once (no duplicates)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   var myPost = new Poster(postImg.src,postTitle.innerText,postQuote.innerText);
-// /*
-//   var index = savedPoster.findIndex(x => x.imageURL == myPost.imageURL);
-//   if (index == -1) {
-//     savedPosters.push(myPost);
-//   }
-//   */
-//     var found = false;
-//     for (var i=0; i < savedPosters.length; i++) {
-//         if (savedPosters[i].imageURL === myPost.imageURL) {
-//             found = true;
-//           break;
-//           console.log("Found the poster");
-//         }
-//     }
-//     if (found != true) {
-//       savedPosters.push(myPost);
-//       console.log("Added poster");
-//     }
-//   // alert(postTitle.innerText);
-// }
-// //
-// // function() {
-// //   innerHTML.
-// // }
