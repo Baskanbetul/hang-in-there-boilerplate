@@ -198,3 +198,5 @@ function savePoster() {
 console.log(savedPosters)
   }
 }
+
+
